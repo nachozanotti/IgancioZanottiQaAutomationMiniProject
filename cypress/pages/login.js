@@ -1,18 +1,22 @@
-import cypress from "cypress";
-import { get } from "cypress/types/lodash";
-///<reference types="cypress" />
+
+
+
 
 class loginLocators {
     constructor(){
         this.userInput = '[id="loginFrm_loginname"]';
-        this.passwordInput = '[id="loginFrm_password"]';
-        this.continueBtn = '[class="btn btn-orange pull-right"]';
+        this.passwordInput = '[type="password"]';
+        this.continueBtn = '[title="Login"]';
+        this.errorMsg = '[class="alert alert-error alert-danger"]'
     }
 }
 export default class login {
     constructor(){
         this.locators = new loginLocators();
 
+    }
+    getErrorMsg(){
+        return cy.get(this.locators.errorMsg)
     }
     getUserInput(){
         return cy.get(this.locators.userInput)
@@ -24,6 +28,7 @@ export default class login {
 
     getLoginBtn(){
         return cy.get(this.locators.continueBtn)
+    
   
 
 }
